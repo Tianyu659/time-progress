@@ -19,7 +19,7 @@ function App() {
 
   var diff = dates[target][1] - dates[target][0];
   var passed = now - dates[target][0];
-  var percent = (passed / diff);
+  var percent = passed / diff;
 
   useEffect(() => {
     let secTimer = setInterval(() => {
@@ -30,15 +30,15 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-row justify-center items-center">
-        <div className="metro-black text-7xl" onClick={() => setLeft(!left)}>
+    <div className="w-[80%] m-auto h-screen flex flex-col justify-center items-center">
+      <div className="flex flex-row justify-center items-center text-[6em] leading-none">
+        <div className="metro-black" onClick={() => setLeft(!left)}>
           How much<span className="opacity-0 select-none">+</span>
           <br />
-          <span className="text-primary-focus">TIME</span>
-          {left ? " left in" : " into"}
+          <span className="text-primary-focus">TIME</span>{" "}
+          <span className="hover:underline">{left ? "left in" : "into"}</span>
         </div>
-        <div className="flex flex-col items-end metro-extra-bold text-7xl">
+        <div className="flex flex-col items-end metro-extra-bold">
           <span
             className={
               target === 0
@@ -62,14 +62,41 @@ function App() {
           </span>
         </div>
       </div>
-      <div className="w-full flex justify-center">
-        <MainProgressBar
-          percent={percent}
-        />
+      <div className="w-full flex justify-center my-4">
+        <MainProgressBar percent={percent} />
       </div>
       <div>
         <span className={(left || "text-primary ") + " text-9xl"}>
-          {left ? ((1-percent)*100).toPrecision(8) : (percent*100).toPrecision(8)}%
+          {left
+            ? ((1 - percent) * 100).toPrecision(8)
+            : (percent * 100).toPrecision(8)}
+          %
+        </span>
+        <br/>
+        <span>
+          {
+            // show passed in days, hours, minutes, seconds
+            left ? (
+              <>
+                {Math.floor((diff - passed) / 86400000)} days,{" "}
+                {Math.floor(((diff - passed) % 86400000) / 3600000)} hours,{" "}
+                {Math.floor((((diff - passed) % 86400000) % 3600000) / 60000)}{" "}
+                minutes,{" "}
+                {Math.floor(
+                  ((((diff - passed) % 86400000) % 3600000) % 60000) / 1000
+                )}{" "}
+                seconds
+              </>
+            ) : (
+              <>
+                {Math.floor(passed / 86400000)} days,{" "}
+                {Math.floor((passed % 86400000) / 3600000)} hours,{" "}
+                {Math.floor(((passed % 86400000) % 3600000) / 60000)} minutes,{" "}
+                {Math.floor((((passed % 86400000) % 3600000) % 60000) / 1000)}{" "}
+                seconds
+              </>
+            )
+          }
         </span>
       </div>
     </div>
