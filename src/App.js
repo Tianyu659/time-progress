@@ -1,11 +1,10 @@
 // import './App.css';
 import { useState, useEffect } from "react";
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from "react-responsive";
 import MainProgressBar from "./Components/MainProgressBar";
 
 function App() {
-
-  const isNotSmallScreen = useMediaQuery({ query: '(min-width: 640px)' })
+  const isNotSmallScreen = useMediaQuery({ query: "(min-width: 640px)" });
 
   const digits = isNotSmallScreen ? 8 : 6;
 
@@ -38,7 +37,10 @@ function App() {
   return (
     <div className="w-[80%] m-auto h-screen flex flex-col justify-center items-center">
       <div className="w-full flex flex-col sm:flex-row justify-center items-center text-5xl lg:text-7xl xl:text-[6em] leading-none">
-        <div className="metro-black w-full sm:w-fit" onClick={() => setLeft(!left)}>
+        <div
+          className="metro-black w-full sm:w-fit"
+          onClick={() => setLeft(!left)}
+        >
           How much<span className="opacity-0 select-none">+</span>
           <br />
           <span className="text-primary-focus">TIME</span>{" "}
@@ -78,7 +80,7 @@ function App() {
             : (percent * 100).toPrecision(digits)}
           %
         </span>
-        <br/>
+        <br />
         <span className={(left || "text-primary ") + " text-lg lg:text-2xl"}>
           {
             // show passed in days, hours, minutes, seconds
