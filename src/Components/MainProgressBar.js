@@ -5,8 +5,7 @@ export default function MainProgressBar({ percent }) {
   React.useEffect(() => {
     themeChange(false);
   }, []);
-
-  const [theme, setTheme] = React.useState("");
+  // const [theme, setTheme] = React.useState("");
 
   const themes = [
     "light",
@@ -59,7 +58,7 @@ export default function MainProgressBar({ percent }) {
         max="1"
         onClick={() => {
           // select random theme
-          console.log("clicked");
+          // console.log("clicked");
           const randomTheme = themes[Math.floor(Math.random() * themes.length)];
           // setTheme(randomTheme);
           document.querySelector("#theme-" + randomTheme).click();
