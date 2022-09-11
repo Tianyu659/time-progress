@@ -1,6 +1,7 @@
 // import './App.css';
 import { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import Footer from "./Components/Footer";
 import MainProgressBar from "./Components/MainProgressBar";
 
 function App() {
@@ -35,8 +36,8 @@ function App() {
   }, []);
 
   return (
-    <div className="w-[80%] m-auto h-screen flex flex-col justify-center items-center">
-      <div className="w-full flex flex-col sm:flex-row justify-center items-center text-5xl lg:text-7xl xl:text-[6em] leading-none">
+    <div className="w-full m-auto h-screen flex flex-col justify-center items-center">
+      <div className="w-[80%] flex flex-col sm:flex-row justify-center items-center text-5xl lg:text-7xl xl:text-[6em] leading-none">
         <div
           className="metro-black w-full sm:w-fit"
           onClick={() => setLeft(!left)}
@@ -70,10 +71,10 @@ function App() {
           </span>
         </div>
       </div>
-      <div className="w-full flex justify-center my-4">
+      <div className="w-[80%] flex justify-center my-4">
         <MainProgressBar percent={percent} />
       </div>
-      <div className="w-full text-center">
+      <div className="w-[80%] text-center">
         <span className={(left || "text-primary ") + " text-7xl lg:text-9xl"}>
           {left
             ? ((1 - percent) * 100).toPrecision(digits)
@@ -107,6 +108,7 @@ function App() {
           }
         </span>
       </div>
+      <Footer className="absolute right-0 bottom-0" />
     </div>
   );
 }
