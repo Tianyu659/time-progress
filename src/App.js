@@ -1,5 +1,5 @@
 // import './App.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useMediaQuery } from "react-responsive";
 import Footer from "./Components/Footer";
 import MainProgressBar from "./Components/MainProgressBar";
@@ -8,13 +8,14 @@ function App() {
   const isNotSmallScreen = useMediaQuery({ query: "(min-width: 640px)" });
 
   const digits = isNotSmallScreen ? 8 : 6;
+  const [year, setYear] = useState(new Date().getFullYear());
 
-  const dates = [
+  const dates = useMemo(() => {return [
     // [Date("2022-08-22"), Date("2022-12-03")],
     [1661126400000, 1670025600000],
     // [Date("2022-01-01"), Date("2023-01-01")],
-    [1640995200000, 1672531200000],
-  ];
+    [(new Date(year, 0, 1)).getTime(), (new Date(year + 1, 0, 1)).getTime()],
+  ];}, [year]);
 
   const options = ["Semester", "Year"];
 
@@ -34,8 +35,12 @@ function App() {
       setNow(new Date());
     }, 1000);
 
+    if (year !== new Date().getFullYear()) {
+      setYear(new Date().getFullYear());
+    }
+
     return () => clearInterval(secTimer);
-  }, []);
+  }, [year]);
 
   return (
     <div className="w-full m-auto h-screen flex flex-col justify-center items-center cursor-default">
