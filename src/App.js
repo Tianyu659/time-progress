@@ -51,7 +51,7 @@ function App() {
         >
           How much<span className="opacity-0 select-none">+</span>
           <br />
-          <span className="text-primary-focus">TIME</span>{" "}
+          <span className="text-secondary">TIME</span>{" "}
           <span className="hover:underline cursor-pointer">{left ? "left in" : "into"}</span>
         </div>
         <div className="flex flex-col items-end metro-extra-bold w-full sm:w-fit">
@@ -59,8 +59,8 @@ function App() {
             <span
               className={
                 target === index
-                  ? "text-secondary underline"
-                  : "text-secondary opacity-30 hover:opacity-75 hover:underline cursor-pointer"
+                  ? "text-primary underline"
+                  : "text-primary opacity-30 hover:opacity-75 hover:underline cursor-pointer"
               }
               key={index}
               onClick={() => setTarget(index)}
