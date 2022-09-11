@@ -16,6 +16,8 @@ function App() {
     [1640995200000, 1672531200000],
   ];
 
+  const options = ["Semester", "Year"];
+
   // 0: semester
   // 1: year
   const [target, setTarget] = useState(0);
@@ -36,7 +38,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full m-auto h-screen flex flex-col justify-center items-center">
+    <div className="w-full m-auto h-screen flex flex-col justify-center items-center cursor-default">
       <div className="w-[80%] flex flex-col sm:flex-row justify-center items-center text-5xl lg:text-7xl xl:text-[6em] leading-none">
         <div
           className="metro-black w-full sm:w-fit"
@@ -45,30 +47,22 @@ function App() {
           How much<span className="opacity-0 select-none">+</span>
           <br />
           <span className="text-primary-focus">TIME</span>{" "}
-          <span className="hover:underline">{left ? "left in" : "into"}</span>
+          <span className="hover:underline cursor-pointer">{left ? "left in" : "into"}</span>
         </div>
         <div className="flex flex-col items-end metro-extra-bold w-full sm:w-fit">
-          <span
-            className={
-              target === 0
-                ? "text-primary"
-                : "text-secondary opacity-30 hover:opacity-75"
-            }
-            tooltip="Semester"
-            onClick={() => setTarget(0)}
-          >
-            Semester
-          </span>
-          <span
-            className={
-              target === 1
-                ? "text-primary"
-                : "text-secondary opacity-30 hover:opacity-75"
-            }
-            onClick={() => setTarget(1)}
-          >
-            Year
-          </span>
+          {options.map((option, index) => (
+            <span
+              className={
+                target === index
+                  ? "text-secondary underline"
+                  : "text-secondary opacity-30 hover:opacity-75 hover:underline cursor-pointer"
+              }
+              key={index}
+              onClick={() => setTarget(index)}
+            >
+              {option}
+            </span>
+          ))}
         </div>
       </div>
       <div className="w-[80%] flex justify-center my-4">
