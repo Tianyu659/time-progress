@@ -7,7 +7,7 @@ export default function Footer({className}) {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            className="fill-secondary hover:fill-accent hover:cursor-pointer"
+            className="fill-secondary hover:fill-secondary-focus hover:cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
           >
             <title>GitHub</title>
