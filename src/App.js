@@ -59,7 +59,7 @@ function App() {
             <span
               className={
                 target === index
-                  ? "text-primary underline"
+                  ? "text-primary underline decoration-secondary"
                   : "text-primary opacity-30 hover:opacity-75 hover:underline cursor-pointer"
               }
               key={index}
@@ -89,19 +89,19 @@ function App() {
                 {Math.floor((diff - passed) / 86400000)} days,{" "}
                 {Math.floor(((diff - passed) % 86400000) / 3600000)} hours,{" "}
                 {Math.floor((((diff - passed) % 86400000) % 3600000) / 60000)}{" "}
-                minutes,{" "}
+                mins,{" "}
                 {Math.floor(
                   ((((diff - passed) % 86400000) % 3600000) % 60000) / 1000
                 )}{" "}
-                seconds
+                secs
               </>
             ) : (
               <>
                 {Math.floor(passed / 86400000)} days,{" "}
                 {Math.floor((passed % 86400000) / 3600000)} hours,{" "}
-                {Math.floor(((passed % 86400000) % 3600000) / 60000)} minutes,{" "}
+                {Math.floor(((passed % 86400000) % 3600000) / 60000)} mins,{" "}
                 {Math.floor((((passed % 86400000) % 3600000) % 60000) / 1000)}{" "}
-                seconds
+                secs
               </>
             )
           }
